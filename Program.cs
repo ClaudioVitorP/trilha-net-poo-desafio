@@ -17,14 +17,21 @@ while (true)
     string imei = Console.ReadLine();
     if (imei.ToLower() == "sair") break;
 
-    Console.Write("Informe a memória (em GB): ");
-    string inputMemoria = Console.ReadLine();
-    if (inputMemoria.ToLower() == "sair") break;
-
-    if (!int.TryParse(inputMemoria, out int memoria) || memoria <= 0)
+    int memoria;
+    while (true)
     {
-        Console.WriteLine("ATENÇÃO: Memória inválida. Digite um número inteiro positivo.");
-        continue;
+        Console.Write("Informe a memória (em GB): ");
+        string inputMemoria = Console.ReadLine();
+        if (inputMemoria.ToLower() == "sair") return;
+
+        if (!int.TryParse(inputMemoria, out memoria) || memoria <= 0)
+        {
+            Console.WriteLine("ATENÇÃO: Memória inválida. Digite um número inteiro positivo.");
+        }
+        else
+        {
+            break;
+        }
     }
 
     Smartphone celular = null;
